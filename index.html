@@ -68,7 +68,7 @@ a{color:var(--primary);text-decoration:none}a:hover{color:var(--accent)}
 .search-box button{background:var(--primary);color:#fff;border:none;padding:0 28px;font-weight:700;font-size:1rem;cursor:pointer}
 .search-results{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-top:8px;overflow:hidden;display:none}
 .search-results.active{display:block}
-.sr-item{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--border);font-size:.9rem}
+.sr-item{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--border);font-size:.9rem;cursor:pointer}
 .sr-item:last-child{border:none}
 .sr-name{font-weight:600}
 .sr-set{color:var(--muted);font-size:.8rem}
@@ -89,14 +89,14 @@ a{color:var(--primary);text-decoration:none}a:hover{color:var(--accent)}
 .section-sub{text-align:center;color:var(--muted);max-width:550px;margin:0 auto 48px}
 /* Features */
 .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-.feat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:all .3s}
+.feat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:all .3s;cursor:pointer}
 .feat:hover{border-color:var(--primary);transform:translateY(-2px)}
 .feat-icon{font-size:2rem;margin-bottom:16px}
 .feat h3{font-size:1.1rem;font-weight:700;margin-bottom:8px}
 .feat p{color:var(--muted);font-size:.9rem}
 /* Marketplace Logos */
 .marketplaces{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-top:32px}
-.mp{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 28px;font-weight:700;font-size:.95rem;color:var(--muted);transition:all .2s}
+.mp{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 28px;font-weight:700;font-size:.95rem;color:var(--muted);transition:all .2s;cursor:pointer}
 .mp:hover{border-color:var(--primary);color:var(--text)}
 /* Waitlist */
 .waitlist-section{background:var(--surface)}
@@ -115,7 +115,7 @@ a{color:var(--primary);text-decoration:none}a:hover{color:var(--accent)}
 .form-success p{color:var(--muted)}
 /* How it works */
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:32px}
-.step{text-align:center;padding:32px}
+.step{text-align:center;padding:32px;cursor:pointer}
 .step-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;font-weight:800;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
 .step h3{font-size:1.15rem;font-weight:700;margin-bottom:8px}
 .step p{color:var(--muted);font-size:.9rem}
@@ -164,9 +164,9 @@ a{color:var(--primary);text-decoration:none}a:hover{color:var(--accent)}
     <button onclick="showDemo()">Search</button>
   </div>
   <div class="search-results" id="demoResults">
-    <div class="sr-item"><div><div class="sr-name">Charizard VMAX</div><div class="sr-set">Shining Fates #SV107</div></div><div class="sr-prices"><div class="sr-price"><div class="store">eBay</div><div class="val">$89</div></div><div class="sr-price"><div class="store">TCGPlayer</div><div class="val">$94</div></div><div class="sr-price"><div class="store">COMC</div><div class="val high">$102</div></div></div></div>
-    <div class="sr-item"><div><div class="sr-name">Charizard VMAX</div><div class="sr-set">Champion's Path #074</div></div><div class="sr-prices"><div class="sr-price"><div class="store">eBay</div><div class="val">$142</div></div><div class="sr-price"><div class="store">TCGPlayer</div><div class="val">$138</div></div><div class="sr-price"><div class="store">Amazon</div><div class="val high">$159</div></div></div></div>
-    <div class="sr-item"><div><div class="sr-name">Charizard VMAX</div><div class="sr-set">Darkness Ablaze #020</div></div><div class="sr-prices"><div class="sr-price"><div class="store">eBay</div><div class="val">$68</div></div><div class="sr-price"><div class="store">TCGPlayer</div><div class="val">$72</div></div><div class="sr-price"><div class="store">Mercari</div><div class="val high">$79</div></div></div></div>
+    <div class="sr-item" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})"><div><div class="sr-name">Charizard VMAX</div><div class="sr-set">Shining Fates #SV107</div></div><div class="sr-prices"><div class="sr-price"><div class="store">eBay</div><div class="val">$89</div></div><div class="sr-price"><div class="store">TCGPlayer</div><div class="val">$94</div></div><div class="sr-price"><div class="store">COMC</div><div class="val high">$102</div></div></div></div>
+    <div class="sr-item" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})"><div><div class="sr-name">Charizard VMAX</div><div class="sr-set">Champion's Path #074</div></div><div class="sr-prices"><div class="sr-price"><div class="store">eBay</div><div class="val">$142</div></div><div class="sr-price"><div class="store">TCGPlayer</div><div class="val">$138</div></div><div class="sr-price"><div class="store">Amazon</div><div class="val high">$159</div></div></div></div>
+    <div class="sr-item" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})"><div><div class="sr-name">Charizard VMAX</div><div class="sr-set">Darkness Ablaze #020</div></div><div class="sr-prices"><div class="sr-price"><div class="store">eBay</div><div class="val">$68</div></div><div class="sr-price"><div class="store">TCGPlayer</div><div class="val">$72</div></div><div class="sr-price"><div class="store">Mercari</div><div class="val high">$79</div></div></div></div>
   </div>
 </div>
 <button class="hero-cta" style="margin-top:32px" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Get Early Access</button>
@@ -181,9 +181,9 @@ a{color:var(--primary);text-decoration:none}a:hover{color:var(--accent)}
 <h2 class="section-title">How It Works</h2>
 <p class="section-sub">Three steps to never overpay for a card again</p>
 <div class="steps">
-  <div class="step"><div class="step-num">1</div><h3>Search Any Card</h3><p>Type any card name, set, or number. We search every major marketplace simultaneously.</p></div>
-  <div class="step"><div class="step-num">2</div><h3>Compare Prices</h3><p>See real-time prices from eBay, TCGPlayer, COMC, Mercari, Amazon, and more side by side.</p></div>
-  <div class="step"><div class="step-num">3</div><h3>Buy the Cheapest</h3><p>Click through to buy at the lowest price. Set alerts for price drops on cards you're watching.</p></div>
+  <div class="step" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})"><div class="step-num">1</div><h3>Search Any Card</h3><p>Type any card name, set, or number. We search every major marketplace simultaneously.</p></div>
+  <div class="step" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})"><div class="step-num">2</div><h3>Compare Prices</h3><p>See real-time prices from eBay, TCGPlayer, COMC, Mercari, Amazon, and more side by side.</p></div>
+  <div class="step" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})"><div class="step-num">3</div><h3>Buy the Cheapest</h3><p>Click through to buy at the lowest price. Set alerts for price drops on cards you're watching.</p></div>
 </div>
 </div></section>
 
@@ -191,15 +191,15 @@ a{color:var(--primary);text-decoration:none}a:hover{color:var(--accent)}
 <h2 class="section-title">Built for Card Collectors</h2>
 <p class="section-sub">Every feature designed to save you money on singles</p>
 <div class="features">
-  <div class="feat"><div class="feat-icon">🔍</div><h3>Price Comparison</h3><p>Real-time prices from 6+ marketplaces. Always find the lowest price on any card.</p></div>
-  <div class="feat"><div class="feat-icon">📉</div><h3>Price History</h3><p>See how card prices have moved over time. Buy at the dip, sell at the peak.</p></div>
-  <div class="feat"><div class="feat-icon">🔔</div><h3>Price Alerts</h3><p>Set target prices on any card. Get notified instantly when it drops to your number.</p></div>
-  <div class="feat"><div class="feat-icon">⭐</div><h3>Graded Card Filter</h3><p>Filter by PSA, BGS, or CGC grade. Compare graded singles specifically.</p></div>
-  <div class="feat"><div class="feat-icon">📱</div><h3>Mobile First</h3><p>Search and compare prices from your phone at card shows, shops, or anywhere.</p></div>
-  <div class="feat"><div class="feat-icon">💰</div><h3>Savings Tracker</h3><p>See how much you've saved by using Sell Singles vs. buying at the first price you found.</p></div>
+  <div class="feat" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})"><div class="feat-icon">🔍</div><h3>Price Comparison</h3><p>Real-time prices from 6+ marketplaces. Always find the lowest price on any card.</p></div>
+  <div class="feat" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})"><div class="feat-icon">📉</div><h3>Price History</h3><p>See how card prices have moved over time. Buy at the dip, sell at the peak.</p></div>
+  <div class="feat" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})"><div class="feat-icon">🔔</div><h3>Price Alerts</h3><p>Set target prices on any card. Get notified instantly when it drops to your number.</p></div>
+  <div class="feat" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})"><div class="feat-icon">⭐</div><h3>Graded Card Filter</h3><p>Filter by PSA, BGS, or CGC grade. Compare graded singles specifically.</p></div>
+  <div class="feat" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})"><div class="feat-icon">📱</div><h3>Mobile First</h3><p>Search and compare prices from your phone at card shows, shops, or anywhere.</p></div>
+  <div class="feat" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})"><div class="feat-icon">💰</div><h3>Savings Tracker</h3><p>See how much you've saved by using Sell Singles vs. buying at the first price you found.</p></div>
 </div>
 <div class="marketplaces">
-  <div class="mp">eBay</div><div class="mp">TCGPlayer</div><div class="mp">COMC</div><div class="mp">Mercari</div><div class="mp">Amazon</div><div class="mp">StockX</div>
+  <div class="mp" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">eBay</div><div class="mp">TCGPlayer</div><div class="mp">COMC</div><div class="mp">Mercari</div><div class="mp">Amazon</div><div class="mp">StockX</div>
 </div>
 </div></section>
 
@@ -284,6 +284,10 @@ document.getElementById('tipOverlay').addEventListener('click',e=>{if(e.target==
 function copyAddr(el){navigator.clipboard.writeText(el.textContent);const o=el.textContent;el.textContent='Copied!';setTimeout(()=>el.textContent=o,1500);}
 statsRef.child('totalVisitors').once('value',s=>statsRef.update({totalVisitors:(s.val()||0)+1}));
 trackEvent('page_view');
+</script>
+<!-- Watermark Protection -->
+<script>
+(function(){var b='sell.party',t='Sell Party';function w(){var c=document.createElement('canvas');c.width=300;c.height=150;var x=c.getContext('2d');x.save();x.translate(150,75);x.rotate(-.44);x.font='600 18px Arial';x.fillStyle='rgba(255,255,255,0.04)';x.textAlign='center';x.fillText(t,0,-10);x.font='400 12px Arial';x.fillStyle='rgba(255,255,255,0.03)';x.fillText(b,0,10);x.restore();var d=document.createElement('div');d.id='_spw';d.setAttribute('data-sp','1');Object.assign(d.style,{position:'fixed',top:'0',left:'0',width:'100vw',height:'100vh',pointerEvents:'none',zIndex:'2147483647',backgroundImage:'url('+c.toDataURL()+')',backgroundRepeat:'repeat',opacity:'1',userSelect:'none'});document.body.appendChild(d);new MutationObserver(function(){if(!document.getElementById('_spw'))w()}).observe(document.body,{childList:true,subtree:true})}setInterval(function(){var e=document.getElementById('_spw');if(!e)w();else{e.style.display='';e.style.visibility='';e.style.opacity='1'}},2000);document.addEventListener('DOMContentLoaded',function(){w()})})();
 </script>
 </body>
 </html>

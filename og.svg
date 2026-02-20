@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="100%" style="stop-color:#111118"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#0a0a0f;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <!-- Decorative line accents -->
+  <line x1="200" y1="140" x2="1000" y2="140" stroke="#22c55e" stroke-opacity="0.1" stroke-width="1"/>
+  <line x1="200" y1="540" x2="1000" y2="540" stroke="#3b82f6" stroke-opacity="0.1" stroke-width="1"/>
+  <!-- Corner accents -->
+  <rect x="180" y="120" width="40" height="2" rx="1" fill="#22c55e" opacity="0.3"/>
+  <rect x="180" y="120" width="2" height="40" rx="1" fill="#22c55e" opacity="0.3"/>
+  <rect x="980" y="120" width="40" height="2" rx="1" fill="#3b82f6" opacity="0.3"/>
+  <rect x="1018" y="120" width="2" height="40" rx="1" fill="#3b82f6" opacity="0.3"/>
+  <rect x="180" y="538" width="40" height="2" rx="1" fill="#3b82f6" opacity="0.3"/>
+  <rect x="180" y="500" width="2" height="40" rx="1" fill="#3b82f6" opacity="0.3"/>
+  <rect x="980" y="538" width="40" height="2" rx="1" fill="#22c55e" opacity="0.3"/>
+  <rect x="1018" y="500" width="2" height="40" rx="1" fill="#22c55e" opacity="0.3"/>
+  <!-- Logo text -->
+  <text x="600" y="290" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="96">
+    <tspan fill="url(#green)">Sell</tspan><tspan fill="url(#blue)"> Singles</tspan>
+  </text>
+  <!-- Tagline -->
+  <text x="600" y="355" text-anchor="middle" font-family="Arial,sans-serif" font-weight="400" font-size="28" fill="#71717a">Best Price on Every Card</text>
+  <!-- CTA pill -->
+  <rect x="440" y="400" width="320" height="56" rx="28" fill="#22c55e"/>
+  <text x="600" y="436" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="20" fill="#0a0a0f">Find Your Card</text>
+  <!-- URL -->
+  <text x="600" y="520" text-anchor="middle" font-family="Arial,sans-serif" font-weight="600" font-size="22" fill="#3b82f6">sell.singles</text>
+</svg>

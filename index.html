@@ -146,7 +146,73 @@ a{color:var(--primary);text-decoration:none}a:hover{color:var(--accent)}
 .footer-tip:hover{border-color:var(--gold);color:var(--gold)}
 @media(max-width:768px){.hero{padding:120px 0 60px}.live-bar .container{gap:16px}.features{grid-template-columns:1fr}}
 @media(max-width:480px){.container{padding:0 16px}.section{padding:60px 0}}
+/* Spin Wheel */
+.spin-section{background:var(--bg);overflow:hidden}
+.wheel-wrapper{display:flex;flex-direction:column;align-items:center;gap:24px;position:relative}
+.wheel-container{position:relative;width:320px;height:320px}
+.wheel-pointer{position:absolute;top:-18px;left:50%;transform:translateX(-50%);z-index:5;width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;border-top:36px solid var(--gold);filter:drop-shadow(0 2px 8px rgba(245,158,11,.5))}
+.wheel-canvas{width:320px;height:320px;border-radius:50%;transition:transform 4s cubic-bezier(.17,.67,.12,.99);box-shadow:0 0 0 8px var(--border),0 0 0 12px var(--card),0 0 40px rgba(59,130,246,.3)}
+.spin-btn{background:linear-gradient(135deg,var(--gold),#d97706);color:#000;border:none;padding:16px 48px;border-radius:99px;font-size:1.15rem;font-weight:800;cursor:pointer;transition:all .3s;text-transform:uppercase;letter-spacing:.5px}
+.spin-btn:hover{transform:translateY(-2px);box-shadow:0 4px 30px rgba(245,158,11,.4)}
+.spin-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.spin-result{text-align:center;min-height:60px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.spin-prize{font-size:1.3rem;font-weight:800;color:var(--gold);animation:prizeIn .5s}
+@keyframes prizeIn{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.spin-cooldown{color:var(--muted);font-size:.9rem}
+.spin-share{display:flex;gap:10px;margin-top:12px;justify-content:center;flex-wrap:wrap}
+.spin-share button{padding:8px 18px;border-radius:99px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.spin-share button:hover{border-color:var(--primary);color:var(--primary)}
+.spin-share .share-x{border-color:#1d9bf0;color:#1d9bf0}
+.spin-share .share-x:hover{background:#1d9bf0;color:#fff}
+/* Referral */
+.ref-section{background:var(--surface)}
+.ref-box{max-width:560px;margin:0 auto;text-align:center}
+.ref-link-wrap{display:flex;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin:16px 0}
+.ref-link-wrap input{flex:1;background:none;border:none;padding:14px 16px;color:var(--gold);font-family:monospace;font-size:.95rem;outline:none}
+.ref-link-wrap button{background:var(--primary);color:#fff;border:none;padding:0 24px;font-weight:700;font-size:.85rem;cursor:pointer;transition:background .2s}
+.ref-link-wrap button:hover{background:#2563eb}
+.ref-share-btns{display:flex;gap:10px;justify-content:center;margin:16px 0}
+.ref-share-btns button{padding:10px 22px;border-radius:99px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.ref-share-btns button:hover{border-color:var(--primary);color:var(--primary)}
+.ref-share-btns .rs-x{border-color:#1d9bf0;color:#1d9bf0}
+.ref-share-btns .rs-x:hover{background:#1d9bf0;color:#fff}
+.ref-share-btns .rs-wa{border-color:#25d366;color:#25d366}
+.ref-share-btns .rs-wa:hover{background:#25d366;color:#fff}
+.ref-incentive{color:var(--accent);font-weight:700;font-size:.95rem;margin:16px 0 8px}
+.ref-incentive-sub{color:var(--muted);font-size:.85rem}
+.leaderboard{max-width:480px;margin:32px auto 0;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.lb-header{display:flex;justify-content:space-between;padding:14px 20px;font-weight:700;font-size:.85rem;color:var(--muted);border-bottom:1px solid var(--border);text-transform:uppercase;letter-spacing:.5px}
+.lb-row{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;border-bottom:1px solid var(--border);font-size:.9rem}
+.lb-row:last-child{border:none}
+.lb-rank{width:32px;font-weight:800;color:var(--gold)}
+.lb-name{flex:1;font-weight:600}
+.lb-refs{color:var(--accent);font-weight:700}
+.lb-row:nth-child(1) .lb-rank{font-size:1.1rem}
+.lb-empty{padding:24px;text-align:center;color:var(--muted);font-size:.9rem}
+/* Newsletter */
+.newsletter-section{background:var(--bg)}
+.nl-form{max-width:480px;margin:0 auto;display:flex;gap:12px}
+.nl-form input{flex:1;background:var(--card);border:1px solid var(--border);border-radius:99px;padding:14px 20px;font-size:1rem;color:var(--text);font-family:inherit;outline:none;transition:border-color .2s}
+.nl-form input:focus{border-color:var(--primary)}
+.nl-form input::placeholder{color:var(--muted)}
+.nl-form button{background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;border:none;padding:14px 32px;border-radius:99px;font-weight:700;font-size:.95rem;cursor:pointer;transition:all .3s;white-space:nowrap}
+.nl-form button:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(59,130,246,.4)}
+.nl-success{text-align:center;color:var(--accent);font-weight:700;display:none}
+@media(max-width:520px){.nl-form{flex-direction:column}}
+/* Floating Tip */
+.float-tip{position:fixed;bottom:24px;left:24px;z-index:90;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#f43f5e);border:none;color:#fff;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(236,72,153,.4);transition:all .3s;animation:floatPulse 3s infinite}
+.float-tip:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(236,72,153,.6)}
+@keyframes floatPulse{0%,100%{box-shadow:0 4px 20px rgba(236,72,153,.4)}50%{box-shadow:0 4px 30px rgba(236,72,153,.7)}}
+/* Share toast */
+.share-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--card);border:1px solid var(--accent);color:var(--text);padding:16px 24px;border-radius:var(--radius);z-index:150;opacity:0;transition:all .4s;pointer-events:none;text-align:center;max-width:360px;width:90%}
+.share-toast.active{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.share-toast h4{margin-bottom:8px;color:var(--accent)}
+.share-toast .st-btns{display:flex;gap:8px;justify-content:center;margin-top:10px}
+.share-toast .st-btns button{padding:6px 16px;border-radius:99px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:.8rem;font-weight:600;cursor:pointer}
+.share-toast .st-btns .st-x{border-color:#1d9bf0;color:#1d9bf0}
+.share-toast .st-close{position:absolute;top:8px;right:12px;background:none;border:none;color:var(--muted);font-size:1rem;cursor:pointer}
 </style>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
 </head>
 <body>
 <nav class="nav"><div class="container">
@@ -203,6 +269,50 @@ a{color:var(--primary);text-decoration:none}a:hover{color:var(--accent)}
 </div>
 </div></section>
 
+<!-- Daily Spin Wheel -->
+<section class="section spin-section" id="spinWheel"><div class="container">
+<h2 class="section-title">Daily Spin</h2>
+<p class="section-sub">Spin once every 24 hours for a free reward</p>
+<div class="wheel-wrapper">
+  <div class="wheel-container">
+    <div class="wheel-pointer"></div>
+    <canvas class="wheel-canvas" id="wheelCanvas" width="640" height="640"></canvas>
+  </div>
+  <button class="spin-btn" id="spinBtn" onclick="spinWheel()">Spin to Win</button>
+  <div class="spin-result" id="spinResult"></div>
+</div>
+</div></section>
+
+<!-- Referral System -->
+<section class="section ref-section" id="referrals"><div class="container">
+<h2 class="section-title">Refer Friends, Move Up</h2>
+<p class="section-sub">Each referral moves you 10 spots up the waitlist. Top 100 referrers get lifetime Pro.</p>
+<div class="ref-box" id="refBox">
+  <div id="refContent" style="display:none">
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:8px">Your referral link:</p>
+    <div class="ref-link-wrap">
+      <input type="text" id="refLinkInput" readonly>
+      <button onclick="copyRefLink()">Copy</button>
+    </div>
+    <div class="ref-share-btns">
+      <button class="rs-x" onclick="shareRefX()">Share on X</button>
+      <button class="rs-wa" onclick="shareRefWA()">WhatsApp</button>
+      <button onclick="copyRefLink()">Copy Link</button>
+    </div>
+    <p class="ref-incentive">Top 100 referrers get lifetime Pro</p>
+    <p class="ref-incentive-sub">Each referral = jump 10 spots on the waitlist</p>
+  </div>
+  <div id="refSignupPrompt">
+    <p style="color:var(--muted);margin-bottom:16px">Join the waitlist first to get your referral link</p>
+    <button class="hero-cta" style="font-size:.95rem;padding:12px 32px" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Join Waitlist</button>
+  </div>
+</div>
+<div class="leaderboard" id="leaderboard">
+  <div class="lb-header"><span>Rank</span><span>Referrer</span><span>Refs</span></div>
+  <div id="lbRows"><div class="lb-empty">Be the first on the leaderboard!</div></div>
+</div>
+</div></section>
+
 <section class="section waitlist-section" id="waitlist"><div class="container">
 <h2 class="section-title">Join the Waitlist</h2>
 <p class="section-sub">Be first to access the card price comparison engine</p>
@@ -239,6 +349,31 @@ a{color:var(--primary);text-decoration:none}a:hover{color:var(--accent)}
 <div class="tip-addr"><label>SOL</label><code onclick="copyAddr(this)">Cds2aUuhyJa4NaZo7JER7LakW4VmmfnqVixHusrKKZsm</code></div>
 </div></div>
 
+<!-- Newsletter -->
+<section class="section newsletter-section" id="newsletter"><div class="container">
+<h2 class="section-title">Price Drop Alerts</h2>
+<p class="section-sub">Get weekly card market insights and price drop alerts straight to your inbox</p>
+<form class="nl-form" id="nlForm">
+  <input type="email" id="nlEmail" placeholder="your@email.com" required>
+  <button type="submit">Subscribe</button>
+</form>
+<p class="nl-success" id="nlSuccess">You're subscribed! Watch your inbox.</p>
+</div></section>
+
+<!-- Floating Tip Button -->
+<button class="float-tip" onclick="openTip()" aria-label="Support us" title="Support Sell Singles">&hearts;</button>
+
+<!-- Share Toast -->
+<div class="share-toast" id="shareToast">
+  <button class="st-close" onclick="closeShareToast()">&times;</button>
+  <h4 id="stTitle">Nice!</h4>
+  <p id="stMsg" style="font-size:.9rem;color:var(--muted)">Share with fellow collectors</p>
+  <div class="st-btns">
+    <button class="st-x" onclick="shareToastX()">Share on X</button>
+    <button onclick="shareToastCopy()">Copy Link</button>
+  </div>
+</div>
+
 <footer class="footer"><div class="container">
 <div class="footer-links">
   <a href="https://sell.party">Sell Party</a>
@@ -255,30 +390,230 @@ a{color:var(--primary);text-decoration:none}a:hover{color:var(--accent)}
 <script>
 firebase.initializeApp({databaseURL:"https://predict-network-ec767-default-rtdb.firebaseio.com",projectId:"predict-network-ec767"});
 const db=firebase.database(),waitlistRef=db.ref('sellsingles/waitlist'),statsRef=db.ref('sellsingles/stats');
+const spinsRef=db.ref('sellsingles/spins'),lbRef=db.ref('sellsingles/leaderboard'),nlRef=db.ref('sellsingles/newsletter');
 let userData=JSON.parse(localStorage.getItem('sellsingles_user')||'null');
+
+// ========== REFERRAL TRACKING ==========
+const urlParams=new URLSearchParams(window.location.search);
+const incomingRef=urlParams.get('ref');
+if(incomingRef)localStorage.setItem('sellsingles_pending_ref',incomingRef);
 
 statsRef.on('value',s=>{const d=s.val()||{};document.getElementById('liveSignups').textContent=(d.totalSignups||0).toLocaleString();});
 
+// ========== GENERATE REFERRAL CODE ==========
+function genRefCode(){const c='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';let r='';for(let i=0;i<8;i++)r+=c[Math.floor(Math.random()*c.length)];return r;}
+
+// ========== WAITLIST SIGNUP ==========
 document.getElementById('waitlistForm').addEventListener('submit',async e=>{
   e.preventDefault();const btn=document.getElementById('submitBtn');btn.disabled=true;btn.textContent='Joining...';
   const name=document.getElementById('wlName').value.trim(),email=document.getElementById('wlEmail').value.trim().toLowerCase(),interests=document.getElementById('wlInterest').value;
   const existing=await waitlistRef.orderByChild('email').equalTo(email).once('value');
   if(existing.exists()){showSuccess();return;}
   const snap=await statsRef.once('value'),pos=((snap.val()||{}).totalSignups||0)+1;
-  const ref=waitlistRef.push();await ref.set({email,name,interests,position:pos,timestamp:Date.now()});
+  const refCode=genRefCode();
+  const ref=waitlistRef.push();
+  const pendingRef=localStorage.getItem('sellsingles_pending_ref');
+  await ref.set({email,name,interests,position:pos,refCode,referredBy:pendingRef||null,timestamp:Date.now()});
   await statsRef.update({totalSignups:pos});
-  userData={email,name,id:ref.key};localStorage.setItem('sellsingles_user',JSON.stringify(userData));
-  trackEvent('waitlist_signup',{interests});showSuccess();
+  localStorage.removeItem('sellsingles_pending_ref');
+  userData={email,name,id:ref.key,refCode};localStorage.setItem('sellsingles_user',JSON.stringify(userData));
+  // Credit referrer
+  if(pendingRef){
+    const refSnap=await waitlistRef.orderByChild('refCode').equalTo(pendingRef).once('value');
+    if(refSnap.exists()){
+      const refKey=Object.keys(refSnap.val())[0];
+      const refData=refSnap.val()[refKey];
+      const newPos=Math.max(1,(refData.position||pos)-10);
+      await waitlistRef.child(refKey).update({position:newPos,referrals:(refData.referrals||0)+1});
+      await lbRef.child(refKey).set({name:refData.name||refData.email.split('@')[0],refs:(refData.referrals||0)+1,code:pendingRef});
+      trackEvent('referral_signup',{referrer:pendingRef});
+    }
+  }
+  trackEvent('waitlist_signup',{interests});
+  showSuccess();
+  showShareToast('You\'re on the list!','Share Sell Singles with fellow collectors');
 });
-function showSuccess(){document.getElementById('waitlistForm').style.display='none';document.getElementById('formSuccess').style.display='block';}
+function showSuccess(){
+  document.getElementById('waitlistForm').style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+  initReferral();
+}
 if(userData)showSuccess();
 
+// ========== REFERRAL UI ==========
+function initReferral(){
+  if(!userData||!userData.refCode)return;
+  document.getElementById('refContent').style.display='block';
+  document.getElementById('refSignupPrompt').style.display='none';
+  document.getElementById('refLinkInput').value='https://sell.singles?ref='+userData.refCode;
+}
+function copyRefLink(){
+  const link='https://sell.singles?ref='+(userData?userData.refCode:'');
+  navigator.clipboard.writeText(link);
+  const btn=event.target;const o=btn.textContent;btn.textContent='Copied!';setTimeout(()=>btn.textContent=o,1500);
+  trackEvent('referral_share',{method:'copy'});
+}
+function shareRefX(){
+  const link='https://sell.singles?ref='+(userData?userData.refCode:'');
+  const text='Compare card prices across every marketplace. Never overpay for singles again. Check it out @SpunkArt13';
+  window.open('https://x.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(link),'_blank');
+  trackEvent('referral_share',{method:'x'});
+}
+function shareRefWA(){
+  const link='https://sell.singles?ref='+(userData?userData.refCode:'');
+  const text='Compare card prices across every marketplace. Never overpay for singles again! '+link;
+  window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
+  trackEvent('referral_share',{method:'whatsapp'});
+}
+
+// ========== LEADERBOARD ==========
+lbRef.orderByChild('refs').limitToLast(10).on('value',snap=>{
+  const rows=document.getElementById('lbRows');
+  const data=snap.val();
+  if(!data){rows.innerHTML='<div class="lb-empty">Be the first on the leaderboard!</div>';return;}
+  const sorted=Object.values(data).sort((a,b)=>(b.refs||0)-(a.refs||0));
+  rows.innerHTML=sorted.map((r,i)=>'<div class="lb-row"><span class="lb-rank">#'+(i+1)+'</span><span class="lb-name">'+r.name+'</span><span class="lb-refs">'+r.refs+' refs</span></div>').join('');
+});
+
+// ========== SPIN WHEEL ==========
+const prizes=['Early Access','Price Alert Free','VIP Badge','Pro Trial 7d','2x Rewards','Mystery Box','Free Upgrade','Try Again'];
+const prizeColors=['#3b82f6','#8b5cf6','#22c55e','#f59e0b','#ec4899','#06b6d4','#f97316','#6366f1'];
+
+function drawWheel(){
+  const canvas=document.getElementById('wheelCanvas');
+  const ctx=canvas.getContext('2d');
+  const cx=320,cy=320,r=310;
+  const sliceAngle=2*Math.PI/prizes.length;
+  ctx.clearRect(0,0,640,640);
+  prizes.forEach((p,i)=>{
+    const start=i*sliceAngle-Math.PI/2;
+    const end=start+sliceAngle;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,start,end);ctx.closePath();
+    const g=ctx.createRadialGradient(cx,cy,0,cx,cy,r);
+    g.addColorStop(0,'#1a1a24');g.addColorStop(1,prizeColors[i]);
+    ctx.fillStyle=g;ctx.fill();
+    ctx.strokeStyle='rgba(255,255,255,0.1)';ctx.lineWidth=2;ctx.stroke();
+    ctx.save();ctx.translate(cx,cy);ctx.rotate(start+sliceAngle/2);
+    ctx.textAlign='center';ctx.fillStyle='#fff';ctx.font='bold 18px -apple-system,sans-serif';
+    ctx.shadowColor='rgba(0,0,0,.5)';ctx.shadowBlur=4;
+    // word wrap
+    const words=p.split(' ');
+    if(words.length>1){
+      ctx.fillText(words[0],r*0.62,-8);
+      ctx.fillText(words.slice(1).join(' '),r*0.62,14);
+    }else{
+      ctx.fillText(p,r*0.62,4);
+    }
+    ctx.restore();
+  });
+  // Center circle
+  ctx.beginPath();ctx.arc(cx,cy,38,0,2*Math.PI);
+  ctx.fillStyle='var(--bg)';ctx.fill();
+  ctx.fillStyle='#111118';ctx.fill();
+  ctx.strokeStyle='var(--border)';ctx.lineWidth=3;ctx.stroke();
+  ctx.fillStyle='#fff';ctx.font='bold 14px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillText('SPIN',cx,cy);
+}
+
+function getSpinData(){return JSON.parse(localStorage.getItem('sellsingles_spin')||'null');}
+
+function checkSpinCooldown(){
+  const data=getSpinData();
+  if(!data)return false;
+  const diff=Date.now()-data.timestamp;
+  if(diff<86400000){
+    const remaining=86400000-diff;
+    const hrs=Math.floor(remaining/3600000);
+    const mins=Math.floor((remaining%3600000)/60000);
+    document.getElementById('spinResult').innerHTML='<div class="spin-cooldown">Next spin in '+hrs+'h '+mins+'m</div><div class="spin-prize" style="font-size:1rem;margin-top:8px">Last prize: '+data.prize+'</div>';
+    document.getElementById('spinBtn').disabled=true;
+    document.getElementById('spinBtn').textContent='Come Back Tomorrow';
+    return true;
+  }
+  return false;
+}
+
+function spinWheel(){
+  if(checkSpinCooldown())return;
+  const btn=document.getElementById('spinBtn');
+  btn.disabled=true;btn.textContent='Spinning...';
+  const canvas=document.getElementById('wheelCanvas');
+  const prizeIdx=Math.floor(Math.random()*prizes.length);
+  const sliceAngle=360/prizes.length;
+  const targetAngle=360-prizeIdx*sliceAngle-sliceAngle/2;
+  const totalRotation=360*5+targetAngle;
+  canvas.style.transition='none';
+  canvas.style.transform='rotate(0deg)';
+  void canvas.offsetHeight;
+  canvas.style.transition='transform 4s cubic-bezier(.17,.67,.12,.99)';
+  canvas.style.transform='rotate('+totalRotation+'deg)';
+  setTimeout(()=>{
+    const prize=prizes[prizeIdx];
+    const spinData={prize,timestamp:Date.now(),idx:prizeIdx};
+    localStorage.setItem('sellsingles_spin',JSON.stringify(spinData));
+    document.getElementById('spinResult').innerHTML='<div class="spin-prize">'+prize+'</div><div class="spin-share"><button class="share-x" onclick="shareSpinX(\''+prize+'\')">Share on X</button><button onclick="shareSpinCopy()">Copy Link</button></div>';
+    // Log to Firebase
+    spinsRef.push({prize,timestamp:Date.now(),user:userData?userData.email:'anonymous'});
+    trackEvent('spin_wheel',{prize});
+    showShareToast('You won: '+prize,'Tell your collector friends!');
+    btn.textContent='Come Back Tomorrow';
+  },4200);
+}
+function shareSpinX(prize){
+  const text='I just won "'+prize+'" on the Sell Singles daily spin! Compare card prices free @SpunkArt13';
+  window.open('https://x.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent('https://sell.singles'),'_blank');
+  trackEvent('referral_share',{method:'x',context:'spin'});
+}
+function shareSpinCopy(){
+  navigator.clipboard.writeText('https://sell.singles');
+  const btn=event.target;btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy Link',1500);
+}
+drawWheel();
+checkSpinCooldown();
+
+// ========== SHARE TOAST ==========
+let shareToastTimer;
+function showShareToast(title,msg){
+  document.getElementById('stTitle').textContent=title;
+  document.getElementById('stMsg').textContent=msg;
+  document.getElementById('shareToast').classList.add('active');
+  clearTimeout(shareToastTimer);
+  shareToastTimer=setTimeout(()=>closeShareToast(),8000);
+}
+function closeShareToast(){document.getElementById('shareToast').classList.remove('active');}
+function shareToastX(){
+  const text='Compare card prices across every marketplace. Never overpay for singles again @SpunkArt13';
+  const link=userData&&userData.refCode?'https://sell.singles?ref='+userData.refCode:'https://sell.singles';
+  window.open('https://x.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(link),'_blank');
+  closeShareToast();
+}
+function shareToastCopy(){
+  const link=userData&&userData.refCode?'https://sell.singles?ref='+userData.refCode:'https://sell.singles';
+  navigator.clipboard.writeText(link);
+  const btn=event.target;btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy Link',1500);
+}
+
+// ========== NEWSLETTER ==========
+document.getElementById('nlForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const email=document.getElementById('nlEmail').value.trim().toLowerCase();
+  if(!email)return;
+  const existing=await nlRef.orderByChild('email').equalTo(email).once('value');
+  if(!existing.exists()){
+    await nlRef.push({email,timestamp:Date.now(),source:'sell-singles'});
+  }
+  document.getElementById('nlForm').style.display='none';
+  document.getElementById('nlSuccess').style.display='block';
+  trackEvent('newsletter_signup');
+});
+
+// ========== EXISTING FEATURES ==========
 function showDemo(){document.getElementById('demoResults').classList.add('active');trackEvent('demo_search');}
 document.getElementById('demoSearch').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();showDemo();}});
 document.getElementById('demoSearch').addEventListener('input',function(){if(this.value.length>2)showDemo();});
 
 function toggleFaq(b){const a=b.nextElementSibling,o=a.classList.contains('open');document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('open'));document.querySelectorAll('.faq-q').forEach(x=>x.classList.remove('active'));if(!o){a.classList.add('open');b.classList.add('active');}}
-function openTip(){document.getElementById('tipOverlay').classList.add('active');}
+function openTip(){document.getElementById('tipOverlay').classList.add('active');trackEvent('tip_click');}
 function closeTip(){document.getElementById('tipOverlay').classList.remove('active');}
 document.getElementById('tipOverlay').addEventListener('click',e=>{if(e.target===e.currentTarget)closeTip();});
 function copyAddr(el){navigator.clipboard.writeText(el.textContent);const o=el.textContent;el.textContent='Copied!';setTimeout(()=>el.textContent=o,1500);}

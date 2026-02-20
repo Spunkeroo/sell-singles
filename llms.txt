@@ -1,0 +1,28 @@
+# Sell Singles
+
+> Compare prices on individual Pokemon & Sports cards across every marketplace
+
+Sell Singles is a price comparison engine for individual trading cards. Search any card and instantly see prices from eBay, TCGPlayer, COMC, Mercari, Amazon, and StockX side by side.
+
+## Features
+- Real-time price comparison across 6+ marketplaces
+- Price history charts and trend analysis
+- Price drop alerts and notifications
+- Graded card filtering (PSA, BGS, CGC)
+- Mobile-first design for use at card shows
+- Savings tracker
+
+## Card Categories
+- Pokemon TCG
+- Sports Cards (Baseball, Basketball, Football, Hockey)
+- Yu-Gi-Oh!
+- Magic: The Gathering
+- Other Trading Card Games
+
+## Status
+Currently in waitlist phase. Join at https://sell.singles
+
+## Links
+- Website: https://sell.singles
+- Live Marketplace: https://sell.party
+- Profit Tracker: https://flip.ink

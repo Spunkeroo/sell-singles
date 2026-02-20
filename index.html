@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sell Singles — Find the Best Price on Every Card</title>
+<meta name="description" content="Compare prices on individual Pokemon &amp; Sports cards across every marketplace. Find the cheapest singles, track prices, and never overpay again.">
+<meta name="keywords" content="pokemon card prices, sports card singles, TCG price comparison, cheapest pokemon cards, card price tracker, buy singles online">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://sell.singles/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sell.singles/">
+<meta property="og:title" content="Sell Singles — Find the Best Price on Every Card">
+<meta property="og:description" content="Compare card prices across every marketplace. Never overpay for singles again.">
+<meta property="og:image" content="https://sell.singles/og.svg">
+<meta property="og:site_name" content="Sell Singles">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sell Singles — Find the Best Price on Every Card">
+<meta name="twitter:description" content="Compare card prices across every marketplace. Never overpay for singles again.">
+<meta name="twitter:image" content="https://sell.singles/og.svg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Sell Singles","url":"https://sell.singles","description":"Compare prices on individual Pokemon & Sports cards across every marketplace"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is Sell Singles?","acceptedAnswer":{"@type":"Answer","text":"Sell Singles is a price comparison engine for individual Pokemon and Sports cards. We search eBay, TCGPlayer, COMC, and more to find you the best price on every card."}},
+{"@type":"Question","name":"Is Sell Singles free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Price lookups are completely free. We earn a small commission when you purchase through our links, at no extra cost to you."}},
+{"@type":"Question","name":"What marketplaces do you compare?","acceptedAnswer":{"@type":"Answer","text":"We compare prices across eBay, TCGPlayer, COMC, Mercari, Amazon, and more. We're always adding new sources."}},
+{"@type":"Question","name":"Can I track card prices over time?","acceptedAnswer":{"@type":"Answer","text":"Yes. Set price alerts on any card and we'll notify you when it drops to your target price."}},
+{"@type":"Question","name":"Do you support graded cards?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. Filter by PSA, BGS, or CGC grade to compare prices on graded singles specifically."}}
+]}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');function trackEvent(n,p){gtag('event',n,p||{});}</script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--surface:#111118;--card:#16161d;--border:#1f1f28;--text:#e5e5e8;--muted:#71717a;--primary:#3b82f6;--secondary:#8b5cf6;--accent:#22c55e;--gold:#f59e0b;--radius:12px;--max-w:1100px}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:var(--primary);text-decoration:none}a:hover{color:var(--accent)}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 20px}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 0}
+.nav .container{display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:1.5rem;font-weight:800}
+.logo-sell{background:linear-gradient(135deg,var(--accent),#4ade80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo-singles{background:linear-gradient(135deg,var(--primary),#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-cta{background:var(--primary);color:#fff;border:none;padding:10px 24px;border-radius:99px;font-weight:600;font-size:.9rem;cursor:pointer;transition:all .2s}
+.nav-cta:hover{background:#2563eb;transform:translateY(-1px)}
+.hero{padding:140px 0 80px;text-align:center;position:relative}
+.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(59,130,246,.1) 0%,transparent 70%);pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:99px;padding:8px 20px;font-size:.85rem;color:var(--muted);margin-bottom:24px}
+.badge .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:clamp(2.5rem,6vw,4.2rem);font-weight:900;line-height:1.1;margin-bottom:16px;letter-spacing:-.03em}
+.hero h1 .green{background:linear-gradient(135deg,var(--accent),#4ade80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h1 .blue{background:linear-gradient(135deg,var(--primary),#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:var(--muted);max-width:580px;margin:0 auto 40px}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;border:none;padding:16px 40px;border-radius:99px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .3s;box-shadow:0 4px 30px rgba(59,130,246,.3)}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(59,130,246,.5)}
+/* Search Demo */
+.search-demo{max-width:600px;margin:40px auto 0;position:relative}
+.search-box{display:flex;background:var(--card);border:2px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .2s}
+.search-box:focus-within{border-color:var(--primary)}
+.search-box input{flex:1;background:none;border:none;padding:18px 20px;font-size:1.1rem;color:var(--text);outline:none;font-family:inherit}
+.search-box input::placeholder{color:var(--muted)}
+.search-box button{background:var(--primary);color:#fff;border:none;padding:0 28px;font-weight:700;font-size:1rem;cursor:pointer}
+.search-results{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-top:8px;overflow:hidden;display:none}
+.search-results.active{display:block}
+.sr-item{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--border);font-size:.9rem}
+.sr-item:last-child{border:none}
+.sr-name{font-weight:600}
+.sr-set{color:var(--muted);font-size:.8rem}
+.sr-prices{display:flex;gap:12px}
+.sr-price{text-align:center}
+.sr-price .store{font-size:.7rem;color:var(--muted);text-transform:uppercase}
+.sr-price .val{font-weight:700;color:var(--accent)}
+.sr-price .val.high{color:var(--gold)}
+/* Live Bar */
+.live-bar{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0;text-align:center}
+.live-bar .container{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+.live-stat{display:flex;align-items:center;gap:8px;font-size:.9rem}
+.live-stat .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+.live-stat strong{color:var(--accent)}
+/* Section */
+.section{padding:80px 0}
+.section-title{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:800;text-align:center;margin-bottom:12px}
+.section-sub{text-align:center;color:var(--muted);max-width:550px;margin:0 auto 48px}
+/* Features */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.feat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:all .3s}
+.feat:hover{border-color:var(--primary);transform:translateY(-2px)}
+.feat-icon{font-size:2rem;margin-bottom:16px}
+.feat h3{font-size:1.1rem;font-weight:700;margin-bottom:8px}
+.feat p{color:var(--muted);font-size:.9rem}
+/* Marketplace Logos */
+.marketplaces{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-top:32px}
+.mp{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 28px;font-weight:700;font-size:.95rem;color:var(--muted);transition:all .2s}
+.mp:hover{border-color:var(--primary);color:var(--text)}
+/* Waitlist */
+.waitlist-section{background:var(--surface)}
+.waitlist-form{max-width:480px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:.85rem;font-weight:600;color:var(--muted)}
+.form-input{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;font-size:1rem;color:var(--text);font-family:inherit;outline:none;transition:border-color .2s}
+.form-input:focus{border-color:var(--primary)}
+.form-input::placeholder{color:var(--muted)}
+.form-select{appearance:none;background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%2371717a'/%3E%3C/svg%3E") no-repeat right 16px center;cursor:pointer}
+.form-submit{background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;border:none;padding:16px;border-radius:99px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .3s}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(59,130,246,.4)}
+.form-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.form-success{text-align:center;display:none}
+.form-success h3{font-size:1.5rem;font-weight:800;color:var(--accent);margin-bottom:8px}
+.form-success p{color:var(--muted)}
+/* How it works */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:32px}
+.step{text-align:center;padding:32px}
+.step-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;font-weight:800;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.step h3{font-size:1.15rem;font-weight:700;margin-bottom:8px}
+.step p{color:var(--muted);font-size:.9rem}
+/* FAQ */
+.faq-list{max-width:700px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{width:100%;background:none;border:none;color:var(--text);font-size:1rem;font-weight:600;padding:20px 0;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit}
+.faq-q:hover{color:var(--primary)}
+.faq-q .arrow{transition:transform .3s;color:var(--muted)}
+.faq-q.active .arrow{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s;color:var(--muted);font-size:.95rem;line-height:1.7}
+.faq-a.open{max-height:300px;padding-bottom:20px}
+/* Tip */
+.tip-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.tip-overlay.active{display:flex}
+.tip-modal{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;max-width:480px;width:90%;position:relative}
+.tip-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer}
+.tip-addr{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:12px}
+.tip-addr label{font-size:.8rem;color:var(--muted);display:block;margin-bottom:4px;font-weight:600}
+.tip-addr code{font-size:.78rem;word-break:break-all;color:var(--gold);cursor:pointer}
+/* Footer */
+.footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 0;text-align:center}
+.footer-links{display:flex;justify-content:center;gap:20px;margin-bottom:12px;flex-wrap:wrap}
+.footer-links a{color:var(--muted);font-size:.85rem}
+.footer-links a:hover{color:var(--primary)}
+.footer-copy{color:var(--muted);font-size:.8rem}
+.footer-tip{background:none;border:1px solid var(--border);color:var(--muted);padding:8px 20px;border-radius:99px;font-size:.85rem;cursor:pointer;margin-top:12px;transition:all .2s}
+.footer-tip:hover{border-color:var(--gold);color:var(--gold)}
+@media(max-width:768px){.hero{padding:120px 0 60px}.live-bar .container{gap:16px}.features{grid-template-columns:1fr}}
+@media(max-width:480px){.container{padding:0 16px}.section{padding:60px 0}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="container">
+<div class="logo"><span class="logo-sell">Sell</span><span class="logo-singles">Singles</span></div>
+<button class="nav-cta" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Join Waitlist</button>
+</div></nav>
+
+<section class="hero"><div class="container">
+<div class="badge"><span class="dot"></span> Coming Soon</div>
+<h1><span class="green">Best Price.</span> <span class="blue">Every Card.</span></h1>
+<p class="hero-sub">Compare prices on individual Pokemon &amp; Sports cards across every marketplace. Find the cheapest singles instantly.</p>
+<div class="search-demo">
+  <div class="search-box">
+    <input type="text" id="demoSearch" placeholder="Search any card... (e.g. Charizard VMAX)" autocomplete="off">
+    <button onclick="showDemo()">Search</button>
+  </div>
+  <div class="search-results" id="demoResults">
+    <div class="sr-item"><div><div class="sr-name">Charizard VMAX</div><div class="sr-set">Shining Fates #SV107</div></div><div class="sr-prices"><div class="sr-price"><div class="store">eBay</div><div class="val">$89</div></div><div class="sr-price"><div class="store">TCGPlayer</div><div class="val">$94</div></div><div class="sr-price"><div class="store">COMC</div><div class="val high">$102</div></div></div></div>
+    <div class="sr-item"><div><div class="sr-name">Charizard VMAX</div><div class="sr-set">Champion's Path #074</div></div><div class="sr-prices"><div class="sr-price"><div class="store">eBay</div><div class="val">$142</div></div><div class="sr-price"><div class="store">TCGPlayer</div><div class="val">$138</div></div><div class="sr-price"><div class="store">Amazon</div><div class="val high">$159</div></div></div></div>
+    <div class="sr-item"><div><div class="sr-name">Charizard VMAX</div><div class="sr-set">Darkness Ablaze #020</div></div><div class="sr-prices"><div class="sr-price"><div class="store">eBay</div><div class="val">$68</div></div><div class="sr-price"><div class="store">TCGPlayer</div><div class="val">$72</div></div><div class="sr-price"><div class="store">Mercari</div><div class="val high">$79</div></div></div></div>
+  </div>
+</div>
+<button class="hero-cta" style="margin-top:32px" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Get Early Access</button>
+</div></section>
+
+<div class="live-bar"><div class="container">
+<div class="live-stat"><span class="dot"></span> <strong id="liveSignups">0</strong>&nbsp;collectors on the waitlist</div>
+<div class="live-stat"><span class="dot"></span> Comparing <strong>6</strong>&nbsp;marketplaces</div>
+</div></div>
+
+<section class="section"><div class="container">
+<h2 class="section-title">How It Works</h2>
+<p class="section-sub">Three steps to never overpay for a card again</p>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><h3>Search Any Card</h3><p>Type any card name, set, or number. We search every major marketplace simultaneously.</p></div>
+  <div class="step"><div class="step-num">2</div><h3>Compare Prices</h3><p>See real-time prices from eBay, TCGPlayer, COMC, Mercari, Amazon, and more side by side.</p></div>
+  <div class="step"><div class="step-num">3</div><h3>Buy the Cheapest</h3><p>Click through to buy at the lowest price. Set alerts for price drops on cards you're watching.</p></div>
+</div>
+</div></section>
+
+<section class="section" style="background:var(--surface)"><div class="container">
+<h2 class="section-title">Built for Card Collectors</h2>
+<p class="section-sub">Every feature designed to save you money on singles</p>
+<div class="features">
+  <div class="feat"><div class="feat-icon">🔍</div><h3>Price Comparison</h3><p>Real-time prices from 6+ marketplaces. Always find the lowest price on any card.</p></div>
+  <div class="feat"><div class="feat-icon">📉</div><h3>Price History</h3><p>See how card prices have moved over time. Buy at the dip, sell at the peak.</p></div>
+  <div class="feat"><div class="feat-icon">🔔</div><h3>Price Alerts</h3><p>Set target prices on any card. Get notified instantly when it drops to your number.</p></div>
+  <div class="feat"><div class="feat-icon">⭐</div><h3>Graded Card Filter</h3><p>Filter by PSA, BGS, or CGC grade. Compare graded singles specifically.</p></div>
+  <div class="feat"><div class="feat-icon">📱</div><h3>Mobile First</h3><p>Search and compare prices from your phone at card shows, shops, or anywhere.</p></div>
+  <div class="feat"><div class="feat-icon">💰</div><h3>Savings Tracker</h3><p>See how much you've saved by using Sell Singles vs. buying at the first price you found.</p></div>
+</div>
+<div class="marketplaces">
+  <div class="mp">eBay</div><div class="mp">TCGPlayer</div><div class="mp">COMC</div><div class="mp">Mercari</div><div class="mp">Amazon</div><div class="mp">StockX</div>
+</div>
+</div></section>
+
+<section class="section waitlist-section" id="waitlist"><div class="container">
+<h2 class="section-title">Join the Waitlist</h2>
+<p class="section-sub">Be first to access the card price comparison engine</p>
+<form class="waitlist-form" id="waitlistForm">
+  <div class="form-group"><label>Your Name</label><input type="text" id="wlName" class="form-input" placeholder="Full name" required></div>
+  <div class="form-group"><label>Email Address</label><input type="email" id="wlEmail" class="form-input" placeholder="you@email.com" required></div>
+  <div class="form-group"><label>What do you collect?</label>
+    <select id="wlInterest" class="form-input form-select" required>
+      <option value="">Select</option><option value="pokemon">Pokemon</option><option value="sports">Sports Cards</option><option value="tcg">Other TCG</option><option value="all">All of the above</option>
+    </select>
+  </div>
+  <button type="submit" class="form-submit" id="submitBtn">Get Early Access</button>
+</form>
+<div class="form-success" id="formSuccess"><h3>You're In!</h3><p>We'll notify you when Sell Singles launches. Check out <a href="https://sell.party" style="color:var(--primary)">Sell Party</a> — our live card marketplace.</p></div>
+</div></section>
+
+<section class="section" id="faq"><div class="container">
+<h2 class="section-title">FAQ</h2>
+<div class="faq-list">
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What is Sell Singles? <span class="arrow">▼</span></button><div class="faq-a">Sell Singles is a price comparison engine for individual Pokemon and Sports cards. We search eBay, TCGPlayer, COMC, and more to find you the best price on every card.</div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is it free? <span class="arrow">▼</span></button><div class="faq-a">Yes. Price lookups are completely free. We earn a small commission when you purchase through our links, at no extra cost to you.</div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What marketplaces do you compare? <span class="arrow">▼</span></button><div class="faq-a">We compare prices across eBay, TCGPlayer, COMC, Mercari, Amazon, StockX, and more. We're always adding new sources.</div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you support graded cards? <span class="arrow">▼</span></button><div class="faq-a">Absolutely. Filter by PSA, BGS, or CGC grade to compare prices on graded singles specifically.</div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I track prices over time? <span class="arrow">▼</span></button><div class="faq-a">Yes. Set price alerts on any card and we'll notify you when it drops to your target price. Full price history charts included.</div></div>
+</div>
+</div></section>
+
+<div class="tip-overlay" id="tipOverlay">
+<div class="tip-modal">
+<button class="tip-close" onclick="closeTip()">&times;</button>
+<h3 style="text-align:center;margin-bottom:16px">Support Sell Singles</h3>
+<div class="tip-addr"><label>BTC</label><code onclick="copyAddr(this)">bc1qr4zcdh9wz26gtn4pqz9c8wmxwalpjut8fxzsfn</code></div>
+<div class="tip-addr"><label>ETH</label><code onclick="copyAddr(this)">0xD2aC89253b5F20f5b03b5B591297Fa4FCC37d41c</code></div>
+<div class="tip-addr"><label>SOL</label><code onclick="copyAddr(this)">Cds2aUuhyJa4NaZo7JER7LakW4VmmfnqVixHusrKKZsm</code></div>
+</div></div>
+
+<footer class="footer"><div class="container">
+<div class="footer-links">
+  <a href="https://sell.party">Sell Party</a>
+  <a href="https://flip.ink">Flip Ink</a>
+  <a href="https://flip.courses">Flip Courses</a>
+  <a href="https://spunkart.com">SpunkArt</a>
+  <a href="https://spunk.bet">Spunk.Bet</a>
+  <a href="https://predict.horse">Predict</a>
+</div>
+<p class="footer-copy">&copy; 2026 Sell Singles. All rights reserved.</p>
+<button class="footer-tip" onclick="openTip()">Support Us</button>
+</div></footer>
+
+<script>
+firebase.initializeApp({databaseURL:"https://predict-network-ec767-default-rtdb.firebaseio.com",projectId:"predict-network-ec767"});
+const db=firebase.database(),waitlistRef=db.ref('sellsingles/waitlist'),statsRef=db.ref('sellsingles/stats');
+let userData=JSON.parse(localStorage.getItem('sellsingles_user')||'null');
+
+statsRef.on('value',s=>{const d=s.val()||{};document.getElementById('liveSignups').textContent=(d.totalSignups||0).toLocaleString();});
+
+document.getElementById('waitlistForm').addEventListener('submit',async e=>{
+  e.preventDefault();const btn=document.getElementById('submitBtn');btn.disabled=true;btn.textContent='Joining...';
+  const name=document.getElementById('wlName').value.trim(),email=document.getElementById('wlEmail').value.trim().toLowerCase(),interests=document.getElementById('wlInterest').value;
+  const existing=await waitlistRef.orderByChild('email').equalTo(email).once('value');
+  if(existing.exists()){showSuccess();return;}
+  const snap=await statsRef.once('value'),pos=((snap.val()||{}).totalSignups||0)+1;
+  const ref=waitlistRef.push();await ref.set({email,name,interests,position:pos,timestamp:Date.now()});
+  await statsRef.update({totalSignups:pos});
+  userData={email,name,id:ref.key};localStorage.setItem('sellsingles_user',JSON.stringify(userData));
+  trackEvent('waitlist_signup',{interests});showSuccess();
+});
+function showSuccess(){document.getElementById('waitlistForm').style.display='none';document.getElementById('formSuccess').style.display='block';}
+if(userData)showSuccess();
+
+function showDemo(){document.getElementById('demoResults').classList.add('active');trackEvent('demo_search');}
+document.getElementById('demoSearch').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();showDemo();}});
+document.getElementById('demoSearch').addEventListener('input',function(){if(this.value.length>2)showDemo();});
+
+function toggleFaq(b){const a=b.nextElementSibling,o=a.classList.contains('open');document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('open'));document.querySelectorAll('.faq-q').forEach(x=>x.classList.remove('active'));if(!o){a.classList.add('open');b.classList.add('active');}}
+function openTip(){document.getElementById('tipOverlay').classList.add('active');}
+function closeTip(){document.getElementById('tipOverlay').classList.remove('active');}
+document.getElementById('tipOverlay').addEventListener('click',e=>{if(e.target===e.currentTarget)closeTip();});
+function copyAddr(el){navigator.clipboard.writeText(el.textContent);const o=el.textContent;el.textContent='Copied!';setTimeout(()=>el.textContent=o,1500);}
+statsRef.child('totalVisitors').once('value',s=>statsRef.update({totalVisitors:(s.val()||0)+1}));
+trackEvent('page_view');
+</script>
+</body>
+</html>

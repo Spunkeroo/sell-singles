@@ -379,6 +379,10 @@ a{color:var(--primary);text-decoration:none}a:hover{color:var(--accent)}
   <a href="https://sell.party">Sell Party</a>
   <a href="https://flip.ink">Flip Ink</a>
   <a href="https://flip.courses">Flip Courses</a>
+  <a href="https://flip.garden">Flip Garden</a>
+  <a href="https://flip.gay">Flip Gay</a>
+  <a href="https://pizza.christmas">Pizza Christmas</a>
+  <a href="https://pizza.singles">Pizza Singles</a>
   <a href="https://spunkart.com">SpunkArt</a>
   <a href="https://spunk.bet">Spunk.Bet</a>
   <a href="https://predict.horse">Predict</a>
@@ -619,6 +623,11 @@ document.getElementById('tipOverlay').addEventListener('click',e=>{if(e.target==
 function copyAddr(el){navigator.clipboard.writeText(el.textContent);const o=el.textContent;el.textContent='Copied!';setTimeout(()=>el.textContent=o,1500);}
 statsRef.child('totalVisitors').once('value',s=>statsRef.update({totalVisitors:(s.val()||0)+1}));
 trackEvent('page_view');
+
+/* Auto-update dynamic content every 10 seconds */
+setInterval(function(){
+  statsRef.once('value',function(s){var d=s.val()||{};document.getElementById('liveSignups').textContent=(d.totalSignups||0).toLocaleString();});
+},10000);
 </script>
 <!-- Watermark Protection -->
 <script>

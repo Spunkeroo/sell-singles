@@ -719,6 +719,22 @@ setInterval(function(){
 })();
 </script>
 
+<div style="background:#0d0d18;border-top:1px solid #1a1a2f;border-bottom:1px solid #1a1a2f;padding:32px 24px;text-align:center">
+  <p style="color:#fff;font-size:1.1rem;font-weight:700;margin-bottom:8px">Find the best card prices first</p>
+  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
+    <button onclick="shareSingles()" style="background:linear-gradient(135deg,#1da1f2,#0d8ecf);color:#fff;font-weight:700;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-size:.88rem">Share on X →</button>
+    <a href="https://www.amazon.com/s?k=pokemon+cards+singles&tag=spunk01-20" target="_blank" rel="noopener sponsored" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#000;font-weight:800;padding:10px 20px;border-radius:8px;font-size:.88rem;display:inline-block">Shop Amazon Singles →</a>
+  </div>
+  <div style="display:flex;gap:8px;max-width:400px;margin:0 auto">
+    <input id="singles-nl-email" type="email" placeholder="your@email.com" style="flex:1;background:#12121f;border:1px solid #1a1a2f;color:#e0e0e0;padding:10px 14px;border-radius:8px;font-size:.88rem;font-family:inherit">
+    <button onclick="subscribeSinglesNL()" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#000;font-weight:800;border:none;padding:10px 18px;border-radius:8px;cursor:pointer;white-space:nowrap">Price Alerts</button>
+  </div>
+  <p id="singles-nl-msg" style="color:#22c55e;font-size:.8rem;margin-top:8px;display:none">You'll get card price alerts when deals drop.</p>
+</div>
+<script>
+window.shareSingles=function(){var txt='Finally a site that compares Pokemon & sports card prices across every marketplace so you never overpay. Free at sell.singles via @SpunkArt13';window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(txt),'_blank');};
+window.subscribeSinglesNL=function(){var em=document.getElementById('singles-nl-email');if(!em||!em.value.includes('@'))return;var key='singles_nl_'+em.value;if(localStorage.getItem(key))return;localStorage.setItem(key,'1');fetch('https://predict-network-ec767-default-rtdb.firebaseio.com/singles_newsletter.json',{method:'POST',body:JSON.stringify({email:em.value,t:Date.now()}),headers:{'Content-Type':'application/json'}}).catch(function(){});var msg=document.getElementById('singles-nl-msg');if(msg)msg.style.display='block';em.value='';};
+</script>
 <div class="vtr-badge" id="vtr-badge"><span class="vtr-dot"></span><span id="vtr-count">...</span></div>
 <script id="vtr-js">
 (function(){
